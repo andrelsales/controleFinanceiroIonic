@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { TipoGastoDTO } from "../../models/tipoGasto.dto";
 // import { Observable } from "rxjs/Observable";
@@ -12,7 +12,7 @@ export class TipoGastoService{
     constructor(public http:HttpClient){}
 
     findAll() : Observable<TipoGastoDTO[]>{
-        return this.http.get<TipoGastoDTO[]>(`${API_CONFIG.baseUrl}/tipogasto`);
+        return this.http.get<TipoGastoDTO[]>(`${API_CONFIG.baseUrl}/tipogastos`);
     }
 
 }
