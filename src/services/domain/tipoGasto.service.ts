@@ -12,7 +12,7 @@ export class TipoGastoService{
     constructor(public http:HttpClient){}
 
     findAll() : Observable<TipoGastoDTO[]>{
-        return this.http.get<TipoGastoDTO[]>(`${API_CONFIG.baseUrl}/tipogastos`);
+        return this.http.get<TipoGastoDTO[]>(`${API_CONFIG.baseUrl}/tipogasto`);
     }
 
 }
