@@ -7,6 +7,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TipoGastoService } from '../services/domain/tipoGasto.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    TipoGastoService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

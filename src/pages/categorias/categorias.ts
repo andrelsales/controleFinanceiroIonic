@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TipoGastoService } from '../../services/domain/tipoGasto.service';
+import { TipoGastoDTO } from '../../models/tipoGasto.dto';
+import { API_CONFIG } from '../../config/api.config';
+
 
 /**
  * Generated class for the CategoriasPage page.
@@ -15,11 +19,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CategoriasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items: TipoGastoDTO[];
+
+  buckUrl : String = API_CONFIG.bucketBaseUrl;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public tipoGastoService: TipoGastoService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriasPage');
+     this.tipoGastoService.findAll()
+     .subscribe(r => {
+      //  console.log(r);
+      this.items = r;
+     },
+     error => {
+       console.log(error);
+     });
+    
+
   }
 
 }
