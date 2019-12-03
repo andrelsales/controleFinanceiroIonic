@@ -4,6 +4,7 @@ import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
 
+
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -32,11 +33,14 @@ export class HomePage {
 
   login()
   {
+    console.log('123');
     // this.navCtrl.push('CategoriasPage');
     console.log(this.creds);
     this.auth.authenticate(this.creds)
     .subscribe(r => {
+      console.log('ABC');
       console.log(r.headers.get('Authorization'));
+      this.auth.successfulLogin(r.headers.get('Authorization'));
       this.navCtrl.setRoot('CategoriasPage');    
     },
     error => {});   
