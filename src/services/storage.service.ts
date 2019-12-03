@@ -7,13 +7,15 @@ import { STORAGE_KEYS } from "../config/storage.keys.config";
 export class StorageService{
 
     getLocalUser() : LocalUser{
-        let user = localStorage.getItem(STORAGE_KEYS.localUser);
+       console.log("getLocalUser()"); 
+       let user = localStorage.getItem(STORAGE_KEYS.localUser);
+       console.log(user);
        if (user == null) {
            return null;
        }
        else
        {
-           JSON.parse(user);
+          return JSON.parse(user);
        }
 
     }
