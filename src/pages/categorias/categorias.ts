@@ -4,7 +4,6 @@ import { TipoGastoService } from '../../services/domain/tipoGasto.service';
 import { TipoGastoDTO } from '../../models/tipoGasto.dto';
 import { API_CONFIG } from '../../config/api.config';
 
-
 /**
  * Generated class for the CategoriasPage page.
  *
@@ -33,8 +32,8 @@ export class CategoriasPage {
     console.log('ionViewDidLoad CategoriasPage');
      this.tipoGastoService.findAll()
      .subscribe(r => {
-      //  console.log(r);
-      this.items = r;
+      this.items = r.filter(a => Number(a.id) <= 6 );
+        //  this.items = r;
      },
      error => {});
     

@@ -33,7 +33,7 @@ export class HomePage {
 
   login()
   {
-    console.log('123');
+    console.log('TENTATIVA DE LOGIN');
     // this.navCtrl.push('CategoriasPage');
     console.log(this.creds);
     this.auth.authenticate(this.creds)

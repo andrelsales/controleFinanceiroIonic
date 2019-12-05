@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Rx";
 import { ClienteDTO } from "../../models/cliente.dto";
 import { API_CONFIG } from "../../config/api.config";
@@ -13,10 +13,14 @@ export class ClienteService{
     }
     findByEmail(email: String) : Observable<ClienteDTO>
     {
-        let token = this.store.getLocalUser().token;
-        let authHeader = new HttpHeaders({'Authorization' : 'Bearer ' + token});
-        return this.http.get<ClienteDTO>(`${API_CONFIG.baseUrl}/cliente/email?value=${email}`,
-        {'headers':authHeader});
+        // let token = this.store.getLocalUser().token;
+        // let authHeader = new HttpHeaders({'Authorization' : 'Bearer ' + token});
+        // return this.http.get<ClienteDTO>(`${API_CONFIG.baseUrl}/cliente/email?value=${email}`,
+        // {'headers':authHeader});
+
+        return this.http.get<ClienteDTO>(`${API_CONFIG.baseUrl}/cliente/email?value=${email}`);
+
+
     }
 
     getImageFromBucket(id : string) : Observable<any> {
