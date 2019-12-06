@@ -39,6 +39,11 @@ export class HomePage {
         },
         error => {});  
   }
+  signup()
+  {
+    //EMPILHA A PAGINA
+    this.navCtrl.push('SignupPage');
+  }
 
   login()
   {
