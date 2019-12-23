@@ -4,12 +4,6 @@ import { TipoGastoService } from '../../services/domain/tipoGasto.service';
 import { TipoGastoDTO } from '../../models/tipoGasto.dto';
 import { API_CONFIG } from '../../config/api.config';
 
-/**
- * Generated class for the CategoriasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -35,9 +29,14 @@ export class CategoriasPage {
       this.items = r.filter(a => Number(a.id) <= 6 );
         //  this.items = r;
      },
-     error => {});
-    
+     error => {});   
 
   }
+
+  showGastoMes(categoria_id : string, nome_categoria : string) {
+    console.log("showgastomes" +categoria_id + "-" + nome_categoria  );
+    
+    this.navCtrl.push('GastoMesPage', {categoria_id: categoria_id, nome_categoria: nome_categoria});    
+}
 
 }

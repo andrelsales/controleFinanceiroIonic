@@ -3,6 +3,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
 import { Observable } from 'rxjs/Rx'; // IMPORTANTE: IMPORT ATUALIZADO
 import { StorageService } from '../services/storage.service';
 import { AlertController } from 'ionic-angular';
+import { FieldMessage } from '../models/fieldmessage';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -48,9 +49,19 @@ export class ErrorInterceptor implements HttpInterceptor {
         }) as any;
     }
 
-    handle422(errorObj: any) {
-        throw new Error("Method not implemented.");
-    }
+    handle422(errorObj) {
+        let alert = this.alertCtrl.create({
+            title: 'Erro 422: Validação',
+            message: this.listErrors(errorObj.errors),
+            enableBackdropDismiss: false,
+            buttons: [
+                {
+                    text: 'Ok'
+                }
+            ]
+        });
+        alert.present();
+}
   
         handle401() {
             let alert = this.alertCtrl.create({
@@ -84,6 +95,14 @@ export class ErrorInterceptor implements HttpInterceptor {
             ]
         });
         alert.present();        
+}
+
+private listErrors(messages : FieldMessage[]) : string {
+    let s : string = '';
+    for (var i=0; i<messages.length; i++) {
+        s = s + '<p><strong>' + messages[i].fieldName + "</strong>: " + messages[i].message + '</p>';
+    }
+    return s;
 }
 
 }

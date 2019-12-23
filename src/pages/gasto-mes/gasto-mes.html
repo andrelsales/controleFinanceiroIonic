@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+         </button>
+    <ion-title>GastoMes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- <ion-icon name="heart"></ion-icon> -->
+    <ion-thumbnail item-start>        
+        <img class="foto" src="{{buckUrl}}/cat{{categoria_id}}.jpg">
+       {{nome_categoria}}         
+    </ion-thumbnail>
+    <!-- <button ion-button block (click)="presentLoading()">Show Loading</button> -->
+
+
+  <form>
+      <ion-item>
+          <ion-label fixed>Gasto</ion-label>
+          <ion-input type="text" value=""></ion-input>
+        </ion-item>
+
+
+      <ion-item>
+          <ion-label fixed>Valor</ion-label>
+        <!-- <ion-input type="text" name="money" placeholder="(R$) Real" [brmasker]="{money: true}"></ion-input> -->
+        <ion-input [(ngModel)]="valor" type="text" name="money" placeholder="(R$)" [brmasker]="{money: true}"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item> -->
+        <!-- <ion-input type="tel" formControlName="money" [value]="form.get('money').value" name="money" placeholder="Money"  [brmasker]="{money: true, thousand: '.', decimalCaracter: ',', decimal: '2'}"></ion-input> -->
+        <!-- <ion-item>
+          <ion-input type="text" name="cpf" placeholder="CPF" [brmasker]="{mask:'000.000.000-00', len:14}"></ion-input>
+        </ion-item> -->
+      <!-- </ion-item> -->
+
+
+      <ion-item>
+          <ion-label>Data</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="data" name="data"> 
+          </ion-datetime>
+        </ion-item>
+<!-- 
+        <ion-item>
+            <ion-label fixed>data3</ion-label>
+            <ion-input [(ngModel)]="data" type="date"  value="a" name="data3"></ion-input>        
+        </ion-item> -->
+    
+
+        <button ion-button block (click)='salvar()'>salvar</button>
+  
+    </form>
+    
+</ion-content>
